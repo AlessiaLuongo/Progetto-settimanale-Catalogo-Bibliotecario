@@ -31,7 +31,8 @@ public class Rivista extends ElementoLetterario{
     @Override
     public String toString() {
         return "Rivista{" +
-                "periodicita=" + periodicita +
+                "titolo=" + getTitolo() +
+                " periodicita=" + periodicita +
                 '}';
     }
 }

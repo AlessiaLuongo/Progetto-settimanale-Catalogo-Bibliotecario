@@ -42,6 +42,7 @@ public class Libro extends ElementoLetterario{
     public String toString() {
         return "Libro{" +
                 "autore='" + autore + '\'' +
+                ", titolo='" + getTitolo() + '\'' +
                 ", genere='" + genere + '\'' +
                 '}';
     }
