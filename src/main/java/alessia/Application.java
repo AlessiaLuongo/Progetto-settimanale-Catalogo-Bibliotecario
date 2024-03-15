@@ -129,7 +129,6 @@ public class Application {
                 int rispostaIsbn = scanner.nextInt();
                 scanner.nextLine();
                 funzionalita.rimuoviElementoConIsbn(archivio, rispostaIsbn);
-
                 }
                 break;
 

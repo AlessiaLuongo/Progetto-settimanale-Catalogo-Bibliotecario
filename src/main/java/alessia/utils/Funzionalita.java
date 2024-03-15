@@ -18,16 +18,8 @@ public class Funzionalita {
 // RIMUOVERE UN ELEMENTO ATTRAVERSO I'ISBN
 
     public  void rimuoviElementoConIsbn(List<ElementoLetterario> archivio, int codiceIsbn){
-        for (int i = 0; i < archivio.size(); i++) {
-            ElementoLetterario elemento = archivio.get(i);
-            if (elemento.getCodiceIsbn() == codiceIsbn) {
-                archivio.remove(elemento);
-            }else {
-                System.out.println("Nessun elemento trovato");
-            }
+        archivio.removeIf(elementoLetterario -> elementoLetterario.getCodiceIsbn()==codiceIsbn);
+
         }
     }
 
-
-
-}
