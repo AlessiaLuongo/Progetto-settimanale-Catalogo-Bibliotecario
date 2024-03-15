@@ -11,3 +11,17 @@ Rivista{titolo=Focus periodicita=MENSILE}
 Rivista{titolo=Mille e una ricetta periodicita=SEMESTRALE}
 Rivista{titolo=Intrattenimento dal parrucchiera periodicita=SETTIMANALE}
 Rivista{titolo=Com'è fatto il corpo umano periodicita=SEMESTRALE}
+ARCHIVIO
+Libro{autore='Ezio Guaitamacchi', titolo='La Storia del Rock', genere='musica'}
+Libro{autore='Clive Staples Lewis', titolo='Narnia', genere='romanzo'}
+Libro{autore='Joanne Rowling', titolo='Harry Potter e il prigioniero di Askaban', genere='romanzo'}
+Libro{autore='Joanne Rowling', titolo='Harry Potter e i Doni della Morte', genere='romanzo'}
+Libro{autore='Alessia Luongo', titolo='Il libro delle ricette vegane', genere='cucina'}
+Libro{autore='Alessia Luongo', titolo='La cucina vegetariana', genere='cucina'}
+Libro{autore='Alessandro Barbero', titolo='La Storia della Storia', genere='storia'}
+Libro{autore='Alessandro Barbero', titolo='Gli occhi di Venezia', genere='storia'}
+Rivista{titolo=Focus periodicita=MENSILE}
+Rivista{titolo=Mille e una ricetta periodicita=SEMESTRALE}
+Rivista{titolo=Intrattenimento dal parrucchiera periodicita=SETTIMANALE}
+Rivista{titolo=Com'è fatto il corpo umano periodicita=SEMESTRALE}
+Libro{autore='autore1', titolo='titolo1', genere='storia'}

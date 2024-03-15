@@ -63,77 +63,23 @@ public class Application {
                 try {
                     if (scelta == 1) {
 
-                        System.out.println("Inserisci il codice ISBN");
-                        int codiceIsbn = scanner.nextInt();
-                        scanner.nextLine();
-
-                        System.out.println("Inserisci il titolo del libro");
-                        String titoloDelLibro = scanner.nextLine();
-
-                        System.out.println("Inserisci l'anno di pubblicazione");
-                        int annoDiPubblicazione = scanner.nextInt();
-
-                        System.out.println("Inserisci il numero di pagine");
-                        int numeroDiPagine = scanner.nextInt();
-                        scanner.nextLine();
-
-                        System.out.println("Inserisci l'autore");
-                        String autoreDelLibro = scanner.nextLine();
-
-                        System.out.println("Inserisci il genere");
-                        String genereDelLibro = scanner.nextLine();
-
-                        Libro libro = new Libro(codiceIsbn, titoloDelLibro, annoDiPubblicazione, numeroDiPagine, autoreDelLibro, genereDelLibro);
-
-                        funzionalita.aggiungiElemento(archivio, libro);
+                        Libro libro = new Libro();
+                        libro.creaUnElementoLetterario(scanner,funzionalita, archivio);
+                        System.out.println("Elemento aggiunto con successo");
 
                     } else if (scelta == 2) {
 
-                        System.out.println("Inserisci il codice ISBN");
-                        int codiceIsbn = scanner.nextInt();
-                        scanner.nextLine();
-
-                        System.out.println("Inserisci il titolo della rivista");
-                        String titoloDellaRivista = scanner.nextLine();
-
-                        System.out.println("Inserisci l'anno di pubblicazione");
-                        int annoDiPubblicazione = scanner.nextInt();
-                        scanner.nextLine();
-
-                        System.out.println("Inserisci il numero di pagine");
-                        int numeroDiPagine = scanner.nextInt();
-                        scanner.nextLine();
-
-                        System.out.println("Quale periodicità ha la rivista?");
-                        System.out.println("1 - settimanale");
-                        System.out.println("2 - mensile");
-                        System.out.println("3 - semestrale");
-                        Periodicita periodicita;
-                        int periodicitaScelta = scanner.nextInt();
-                            switch (periodicitaScelta){
-                                case 1:
-                                    periodicita = Periodicita.SETTIMANALE;
-                                    break;
-                                case 2:
-                                    periodicita = Periodicita.MENSILE;
-                                    break;
-                                case 3:
-                                    periodicita = Periodicita.SEMESTRALE;
-                                default:
-                                    periodicita = Periodicita.NO_VALUE;
-                                    throw new RuntimeException();
-
-                        }
-
-                        Rivista rivista = new Rivista(codiceIsbn, titoloDellaRivista, annoDiPubblicazione, numeroDiPagine,periodicita);
-                        archivio.add(rivista);
+                        Rivista rivista = new Rivista();
+                        rivista.creaUnElementoLetterario(scanner, funzionalita, archivio);
+                        System.out.println("Elemento aggiunto con successo");
 
                     }else throw new RuntimeException();
                 }catch (Exception e){
-                    logger.error(e.getMessage());
+                    logger.error("Errore!" + e.getMessage());
                 };
                 } break;
             case(2):{
+                
                 System.out.println("Inserisci il codice ISBN per rimuovere un elemento letterario");
                 int rispostaIsbn = scanner.nextInt();
                 scanner.nextLine();

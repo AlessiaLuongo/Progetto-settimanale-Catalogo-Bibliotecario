@@ -1,5 +1,10 @@
 package alessia.entities;
 
+import alessia.utils.Funzionalita;
+
+import java.util.List;
+import java.util.Scanner;
+
 public abstract class ElementoLetterario {
     private int codiceIsbn;
     private String titolo;
@@ -13,6 +18,10 @@ public abstract class ElementoLetterario {
         this.titolo = titolo;
         this.annoDiPubblicazione = annoDiPubblicazione;
         this.numeroDiPagine = numeroDiPagine;
+    }
+
+    public ElementoLetterario() {
+
     }
 
 // GETTERS & SETTERS
@@ -50,4 +59,6 @@ public abstract class ElementoLetterario {
         this.numeroDiPagine = numeroDiPagine;
     }
 
+
+    public abstract void creaUnElementoLetterario(Scanner scanner, Funzionalita funzionalita, List<ElementoLetterario>archivio);
 }
