@@ -4,10 +4,12 @@ import alessia.entities.ElementoLetterario;
 import alessia.entities.Libro;
 import alessia.entities.Periodicita;
 import alessia.entities.Rivista;
+import alessia.files.FilesMain;
 import alessia.utils.Funzionalita;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 
 public class Application {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Funzionalita funzionalita = new Funzionalita();
 
@@ -88,7 +90,7 @@ public class Application {
                         int codiceIsbn = scanner.nextInt();
                         scanner.nextLine();
 
-                        System.out.println("Inserisci il titolo del libro");
+                        System.out.println("Inserisci il titolo della rivista");
                         String titoloDellaRivista = scanner.nextLine();
 
                         System.out.println("Inserisci l'anno di pubblicazione");
@@ -167,8 +169,15 @@ public class Application {
 
             }break;
             case(5):{
-                System.out.println("Inserisci l'autore per ricercare un Elemento letterario");
-                String rispostaAutore = scanner.nextLine();
+                System.out.println("Inserisci prima il nome e poi il cognome dell'autore per trovare un suo Elemento letterario");
+                System.out.println("Nome");
+                String rispostaAutore1 = scanner.next();
+                scanner.nextLine();
+                System.out.println("Cognome");
+                String rispostaAutore2 = scanner.next();
+                String rispostaAutore = rispostaAutore1+ " " + rispostaAutore2;
+
+                System.out.println(rispostaAutore);
                 try {
                     List<ElementoLetterario> elementoTrovato = funzionalita.cercaElementoConLAutore(archivio, rispostaAutore);
                     System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
@@ -183,7 +192,8 @@ public class Application {
 
             default: break;
         }
-
+        FilesMain dataBase = new FilesMain();
+        dataBase.creaFileArchivio(archivio);
 
     }
 }
