@@ -19,6 +19,9 @@ public class Application {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
     public static void main(String[] args) throws IOException {
 
+        FilesMain contenutoDataBase = new FilesMain();
+        contenutoDataBase.getFileArchivio();
+
         Funzionalita funzionalita = new Funzionalita();
 
 
