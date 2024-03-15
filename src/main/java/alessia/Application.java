@@ -57,6 +57,7 @@ public class Application {
 
         switch (risposta){
             case(1):{
+
                 System.out.println("Vuoi aggiungere un Libro o una Rivista?");
                 System.out.println("Inserisci 1 per Libro e 2 per Rivista");
                 int scelta = scanner.nextInt();
@@ -79,14 +80,15 @@ public class Application {
                 };
                 } break;
             case(2):{
-                
+
                 System.out.println("Inserisci il codice ISBN per rimuovere un elemento letterario");
                 int rispostaIsbn = scanner.nextInt();
                 scanner.nextLine();
+
                 try {
                     funzionalita.rimuoviElementoConIsbn(archivio, rispostaIsbn);
                 }catch (Exception e){
-                    logger.error(e.getMessage());
+                    logger.error("Errore!" + e.getMessage());
                 }
 
                 }
@@ -101,7 +103,7 @@ public class Application {
                     ElementoLetterario elementoTrovato = funzionalita.cercaElementoLetterarioConIsbn(archivio, rispostaIsbn);
                      System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
                  }catch (Exception e){
-                     logger.error(e.getMessage());
+                     logger.error("Errore!" + e.getMessage());
                  }
             }break;
             case(4):{
@@ -113,7 +115,7 @@ public class Application {
                     ElementoLetterario elementoTrovato = funzionalita.cercaElementoConLAnnoDiPubblicazione(archivio, rispostaAnno);
                     System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
                 }catch (Exception e){
-                    logger.error(e.getMessage());
+                    logger.error("Errore!" + e.getMessage());
                 }
 
             }break;
@@ -126,12 +128,11 @@ public class Application {
                 String rispostaAutore2 = scanner.next();
                 String rispostaAutore = rispostaAutore1+ " " + rispostaAutore2;
 
-                System.out.println(rispostaAutore);
                 try {
                     List<ElementoLetterario> elementoTrovato = funzionalita.cercaElementoConLAutore(archivio, rispostaAutore);
                     System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
                 }catch (Exception e){
-                logger.error(e.getMessage());
+                logger.error("Errore!" + e.getMessage());
             }
             }break;
             case(0):{

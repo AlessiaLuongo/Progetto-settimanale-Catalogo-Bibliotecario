@@ -61,4 +61,6 @@ public abstract class ElementoLetterario {
 
 
     public abstract void creaUnElementoLetterario(Scanner scanner, Funzionalita funzionalita, List<ElementoLetterario>archivio);
+
+
 }
