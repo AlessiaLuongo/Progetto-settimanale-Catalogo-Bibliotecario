@@ -38,6 +38,14 @@ public class Funzionalita {
                 .findFirst().get();
     }
 
+// RICERCARE UN ELEMENTO ATTRAVERSO L'AUTORE
+
+    public List<ElementoLetterario> cercaElementoConLAutore(List<ElementoLetterario> archivio, String autore){
+        return archivio.stream()
+                .filter(elemento-> elemento instanceof Libro)
+                .filter(libro -> ((Libro) libro).getAutore().equalsIgnoreCase(autore)).toList();
+    }
+
 
     }
 

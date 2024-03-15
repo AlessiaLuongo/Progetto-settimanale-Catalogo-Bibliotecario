@@ -101,22 +101,26 @@ public class Application {
 
                         System.out.println("Quale periodicità ha la rivista?");
                         System.out.println("1 - settimanale");
-                        System.out.println("1 - mensile");
-                        System.out.println("1 - semestrale");
-
-                        int periodicita = scanner.nextInt();
-                            switch (periodicita){
+                        System.out.println("2 - mensile");
+                        System.out.println("3 - semestrale");
+                        Periodicita periodicita;
+                        int periodicitaScelta = scanner.nextInt();
+                            switch (periodicitaScelta){
                                 case 1:
-                                    Periodicita periodicita1 = Periodicita.values()[0];
+                                    periodicita = Periodicita.SETTIMANALE;
                                     break;
                                 case 2:
-                                    Periodicita periodicita2 = Periodicita.values()[1];
+                                    periodicita = Periodicita.MENSILE;
                                     break;
                                 case 3:
-                                    Periodicita periodicita3 = Periodicita.values()[2];
+                                    periodicita = Periodicita.SEMESTRALE;
+                                default:
+                                    periodicita = Periodicita.NO_VALUE;
+                                    throw new RuntimeException();
+
                         }
 
-                        Rivista rivista = new Rivista(codiceIsbn, titoloDellaRivista, annoDiPubblicazione, numeroDiPagine);
+                        Rivista rivista = new Rivista(codiceIsbn, titoloDellaRivista, annoDiPubblicazione, numeroDiPagine,periodicita);
                         archivio.add(rivista);
 
                     }else throw new RuntimeException();
@@ -163,10 +167,18 @@ public class Application {
 
             }break;
             case(5):{
-                System.out.println("5");
+                System.out.println("Inserisci l'autore per ricercare un Elemento letterario");
+                String rispostaAutore = scanner.nextLine();
+                try {
+                    List<ElementoLetterario> elementoTrovato = funzionalita.cercaElementoConLAutore(archivio, rispostaAutore);
+                    System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
+                }catch (Exception e){
+                logger.error(e.getMessage());
+            }
             }break;
             case(0):{
-                System.out.println("0");
+                System.out.println("Spegnimento in corso.......");
+                scanner.close();
             }break;
 
             default: break;
