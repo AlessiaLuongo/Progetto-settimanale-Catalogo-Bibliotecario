@@ -14,6 +14,7 @@ public class Rivista extends ElementoLetterario{
         this.periodicita = periodicita;
     }
 
+
 //GETTERS & SETTERS
 
 

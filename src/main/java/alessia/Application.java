@@ -5,6 +5,8 @@ import alessia.entities.Libro;
 import alessia.entities.Periodicita;
 import alessia.entities.Rivista;
 import alessia.utils.Funzionalita;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,10 +14,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
-
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
     public static void main(String[] args) {
 
         Funzionalita funzionalita = new Funzionalita();
+
 
 // CREAZIONE DEGLI ELEMENTI LETTERARI
 
@@ -38,22 +41,98 @@ public class Application {
         List<ElementoLetterario> archivio = new ArrayList<>(Arrays.asList(libro1, libro2, libro3, libro4, libro5, libro6, libro7, libro8, rivista1, rivista2, rivista3, rivista4));
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("CHE COSA VUOI FARE? 1- aggiungere un nuovo libro" +
-                "2- rimuovere un libro usando l'ISBN " +
-                "3- ricercare un elemento attraverso l'ISBN " +
-                "4- ricercare un elemento attraverso l'anno di creazione " +
-                "5- ricercare un elemento attraverso l'autore "
-        );
+        System.out.println("CHE COSA VUOI FARE?");
+        System.out.println("1- aggiungere un nuovo Elemento letterario");
+        System.out.println("2- rimuovere un libro usando l'ISBN ");
+        System.out.println("3- ricercare un elemento attraverso l'ISBN ");
+        System.out.println("4- ricercare un elemento attraverso l'anno di creazione");
+        System.out.println("5- ricercare un elemento attraverso l'autore ");
 
         int risposta = scanner.nextInt();
 
         switch (risposta){
             case(1):{
-                System.out.println("AGGIUNTO");
-            } break;
+                System.out.println("Vuoi aggiungere un Libro o una Rivista?");
+                System.out.println("Inserisci 1 per Libro e 2 per Rivista");
+                int scelta = scanner.nextInt();
+                try {
+                    if (scelta == 1) {
+
+                        System.out.println("Inserisci il codice ISBN");
+                        int codiceIsbn = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("Inserisci il titolo del libro");
+                        String titoloDelLibro = scanner.nextLine();
+
+                        System.out.println("Inserisci l'anno di pubblicazione");
+                        int annoDiPubblicazione = scanner.nextInt();
+
+                        System.out.println("Inserisci il numero di pagine");
+                        int numeroDiPagine = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("Inserisci l'autore");
+                        String autoreDelLibro = scanner.nextLine();
+
+                        System.out.println("Inserisci il genere");
+                        String genereDelLibro = scanner.nextLine();
+
+                        Libro libro = new Libro(codiceIsbn, titoloDelLibro, annoDiPubblicazione, numeroDiPagine, autoreDelLibro, genereDelLibro);
+
+                        funzionalita.aggiungiElemento(archivio, libro);
+
+                    } else if (scelta == 2) {
+
+                        System.out.println("Inserisci il codice ISBN");
+                        int codiceIsbn = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("Inserisci il titolo del libro");
+                        String titoloDellaRivista = scanner.nextLine();
+
+                        System.out.println("Inserisci l'anno di pubblicazione");
+                        int annoDiPubblicazione = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("Inserisci il numero di pagine");
+                        int numeroDiPagine = scanner.nextInt();
+                        scanner.nextLine();
+
+                        System.out.println("Quale periodicità ha la rivista?");
+                        System.out.println("1 - settimanale");
+                        System.out.println("1 - mensile");
+                        System.out.println("1 - semestrale");
+
+                        int periodicita = scanner.nextInt();
+                            switch (periodicita){
+                                case 1:
+                                    Periodicita periodicita1 = Periodicita.values()[0];
+                                    break;
+                                case 2:
+                                    Periodicita periodicita2 = Periodicita.values()[1];
+                                    break;
+                                case 3:
+                                    Periodicita periodicita3 = Periodicita.values()[2];
+                        }
+
+                        Rivista rivista = new Rivista(codiceIsbn, titoloDellaRivista, annoDiPubblicazione, numeroDiPagine);
+                        archivio.add(rivista);
+
+                    }else throw new RuntimeException();
+                }catch (Exception e){
+                    logger.error(e.getMessage());
+                };
+                } break;
             case(2):{
-                System.out.println("2");
-            }break;
+                System.out.println("Inserisci il codice ISBN per rimuovere un elemento letterario");
+                int rispostaIsbn = scanner.nextInt();
+                scanner.nextLine();
+                funzionalita.rimuoviElementoConIsbn(archivio, rispostaIsbn);
+
+                }
+                break;
+
             case(3):{
                 System.out.println("3");
             }break;
