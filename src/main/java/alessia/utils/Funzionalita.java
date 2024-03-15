@@ -25,10 +25,18 @@ public class Funzionalita {
 // RICERCARE UN ELEMENTO ATTRAVERSO L'ISBN
 
     public ElementoLetterario cercaElementoLetterarioConIsbn(List<ElementoLetterario> archivio, int codiceIsbn){
-        return archivio.stream().filter(elementoLetterario -> elementoLetterario.getCodiceIsbn()==codiceIsbn)
+        return archivio.stream()
+                .filter(elementoLetterario -> elementoLetterario.getCodiceIsbn()==codiceIsbn)
                 .findFirst().get();
     }
 
+// RICERCARE UN ELEMENTO ATTRAVERSO L'ANNO DI PUBBLICAZIONE
+
+    public ElementoLetterario cercaElementoConLAnnoDiPubblicazione(List<ElementoLetterario> archivio, int annoDiPubblicazione){
+        return archivio.stream()
+                .filter(elementoLetterario -> elementoLetterario.getAnnoDiPubblicazione()==annoDiPubblicazione)
+                .findFirst().get();
+    }
 
 
     }

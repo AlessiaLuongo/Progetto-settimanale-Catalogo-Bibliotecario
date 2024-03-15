@@ -150,7 +150,17 @@ public class Application {
                  }
             }break;
             case(4):{
-                System.out.println("4");
+                System.out.println("Inserisci l'anno di pubblicazione per ricercare un Elemento letterario");
+                int rispostaAnno = scanner.nextInt();
+                scanner.nextLine();
+
+                try {
+                    ElementoLetterario elementoTrovato = funzionalita.cercaElementoConLAnnoDiPubblicazione(archivio, rispostaAnno);
+                    System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
+                }catch (Exception e){
+                    logger.error(e.getMessage());
+                }
+
             }break;
             case(5):{
                 System.out.println("5");
