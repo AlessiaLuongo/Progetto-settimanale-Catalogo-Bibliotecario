@@ -21,5 +21,15 @@ public class Funzionalita {
         archivio.removeIf(elementoLetterario -> elementoLetterario.getCodiceIsbn()==codiceIsbn);
 
         }
+
+// RICERCARE UN ELEMENTO ATTRAVERSO L'ISBN
+
+    public ElementoLetterario cercaElementoLetterarioConIsbn(List<ElementoLetterario> archivio, int codiceIsbn){
+        return archivio.stream().filter(elementoLetterario -> elementoLetterario.getCodiceIsbn()==codiceIsbn)
+                .findFirst().get();
+    }
+
+
+
     }
 

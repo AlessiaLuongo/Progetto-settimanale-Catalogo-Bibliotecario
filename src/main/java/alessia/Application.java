@@ -128,12 +128,26 @@ public class Application {
                 System.out.println("Inserisci il codice ISBN per rimuovere un elemento letterario");
                 int rispostaIsbn = scanner.nextInt();
                 scanner.nextLine();
-                funzionalita.rimuoviElementoConIsbn(archivio, rispostaIsbn);
+                try {
+                    funzionalita.rimuoviElementoConIsbn(archivio, rispostaIsbn);
+                }catch (Exception e){
+                    logger.error(e.getMessage());
+                }
+
                 }
                 break;
 
             case(3):{
-                System.out.println("3");
+                    System.out.println("Inserisci il codice ISBN per ricercare un Elemento letterario");
+                    int rispostaIsbn = scanner.nextInt();
+                    scanner.nextLine();
+
+                 try {
+                    ElementoLetterario elementoTrovato = funzionalita.cercaElementoLetterarioConIsbn(archivio, rispostaIsbn);
+                     System.out.println("Ecco l'elemento che cercavi: " + elementoTrovato);
+                 }catch (Exception e){
+                     logger.error(e.getMessage());
+                 }
             }break;
             case(4):{
                 System.out.println("4");
